@@ -21,12 +21,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className="antialiased">
+        {/* The Flex wrapper ensures no extra height is created */}
         <ThemeProvider>
-          <Navbar />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+
+            {/* Main takes all available space, pushing footer down */}
+            <main>{children}</main>
+
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
